@@ -8,7 +8,10 @@ import { proofStats, fundingBreakdown, fundingTotal, fundingLabel } from '../dat
 import { camera } from '../data/photos';
 import { site } from '../site.config';
 
-const featured = liveRoles.slice(0, 4);
+// Selected work. An explicit list rather than the top of the array, so adding or
+// reordering a role in roles.ts cannot quietly change what the homepage leads with.
+const featuredIds = ['junior-talk', 'q-auto', 'qatar-scientific-club', 'uhub'];
+const featured = featuredIds.flatMap((id) => liveRoles.filter((r) => r.id === id));
 ---
 
 <Base cue={site.availability}>
