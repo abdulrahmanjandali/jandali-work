@@ -19,10 +19,10 @@ export const site = {
     ottawaWebStudio: 'https://ottawa-web-studio.vercel.app',
   },
 
-  // TODO: paste your Web3Forms access key here. Free, no backend needed.
-  // Get one at https://web3forms.com - it emails submissions straight to you.
-  // Until this is filled in, the form shows a clear error instead of failing silently.
-  formAccessKey: '',
+  // Web3Forms access key. Public by design - it identifies the endpoint and is
+  // visible in the form markup on the live site. Spam controls live in the
+  // Web3Forms dashboard, not in hiding this value.
+  formAccessKey: '0beb21c3-8a1b-4770-a5e7-4e81f8cacb49',
 };
 
 export const nav = [
