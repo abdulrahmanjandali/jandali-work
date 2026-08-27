@@ -12,8 +12,8 @@
  *   - 12,000 CAD -> 21,000+ CAD in combined grants and prizes
  *   - Al Jazeera keeps its second bullet, rewritten so it makes a claim
  *
- * draft: true keeps a role out of the built site. Fill in the TODOs, flip the
- * flag to false, and it appears. `npm run build` prints a list of what is still drafted.
+ * draft: true keeps a role out of the built site. Set the flag to false and the
+ * role appears. Nothing is drafted right now, so every entry below renders.
  */
 
 export type Role = {
@@ -37,37 +37,28 @@ export const roles: Role[] = [
     title: 'Founder',
     commitment: 'Founder',
     city: 'Ottawa, Canada',
-    start: 'TODO', // TODO: month and year you started
+    start: 'Jun 2026',
     end: 'Present',
     bullets: [
-      'Run a freelance web design studio building complete sites for small businesses, priced at a flat 400 CAD launch with no add-ons.',
-      'Handle the whole engagement end to end: intake, design, build, deploy, and handover.',
-      'TODO: how many clients, what kinds of businesses, any result you can point to.',
+      'Run a freelance web design studio building complete sites for small businesses at a flat 400 CAD launch price, no add-ons and no monthly fees.',
+      'Shipped 7 sites: 3 restaurants, 2 small businesses, and 2 personal sites.',
+      'Handle every engagement alone, from intake and copy through design, build, deploy, and handover.',
     ],
     link: 'https://ottawa-web-studio.vercel.app',
-    draft: true, // TODO: add the start date and the client bullet, then set to false
   },
   {
     id: 'flourish-clips',
     org: 'Flourish Clips',
-    title: 'TODO',
-    commitment: 'Part time',
-    city: 'Ottawa, Canada',
-    start: 'TODO',
-    end: 'TODO',
-    bullets: ['TODO: what the business is, what you did, one number if you have one.'],
-    draft: true,
-  },
-  {
-    id: 'pattern',
-    org: 'Pattern',
-    title: 'TODO',
-    commitment: 'Part time',
-    city: 'TODO',
-    start: 'TODO',
-    end: 'TODO',
-    bullets: ['TODO: what the business is, what you did, one number if you have one.'],
-    draft: true,
+    title: 'Founder and Editor',
+    commitment: 'Founder',
+    city: 'Doha, Qatar',
+    start: 'Jul 2024',
+    end: 'May 2025',
+    bullets: [
+      'Founded a video editing studio cutting short-form content for influencers and creators.',
+      'Edited content that passed 1,000,000 views on multiple videos.',
+      'Ran the business end to end, from client intake through revisions and delivery.',
+    ],
   },
   {
     id: 'junior-talk',
