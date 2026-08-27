@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../site.config';
+---
+
+<Base title="Contact" description="Get in touch about a role, freelance work, or event photography." cue="Open to work">
+  <section class="band band--flush">
+    <div class="shell wrap">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h1 class="page__head">Say what you need. I will tell you if I am the right person.</h1>
+        <p class="lede">
+          Roles, contract work, and shoots all land in the same inbox. Replies inside two
+          business days.
+        </p>
+
+        <dl class="direct">
+          <div>
+            <dt class="cue">Email</dt>
+            <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+          </div>
+          <div>
+            <dt class="cue">Phone</dt>
+            <dd><a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`}>{site.phone}</a></dd>
+          </div>
+          <div>
+            <dt class="cue">Based</dt>
+            <dd>{site.location}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .wrap {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 900px) {
+    .wrap {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .page__head {
+    font-size: clamp(2rem, 5.5vw, 3.6rem);
+    font-variation-settings: 'wdth' 86;
+    max-width: 16ch;
+    margin-bottom: 1.25rem;
+  }
+
+  .lede {
+    max-width: 44ch;
+    color: color-mix(in srgb, var(--paper) 82%, transparent);
+  }
+
+  .direct {
+    margin: 2.5rem 0 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .direct div {
+    display: grid;
+    gap: 0.3rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .direct dd {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+  }
+
+  .direct a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .direct a:hover {
+    color: var(--lime);
+    border-bottom-color: var(--lime);
+  }
+</style>

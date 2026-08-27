@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" cue="404">
+  <section class="band band--flush">
+    <div class="shell">
+      <p class="eyebrow">404</p>
+      <h1>That page is not here.</h1>
+      <p class="lede">Try the work, the gallery, or send a message.</p>
+      <div class="acts">
+        <a class="btn" href="/work">See the work</a>
+        <a class="btn btn--ghost" href="/">Back to the start</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-variation-settings: 'wdth' 84;
+    margin-bottom: 1.25rem;
+  }
+
+  .lede {
+    color: color-mix(in srgb, var(--paper) 82%, transparent);
+    margin-bottom: 2rem;
+  }
+
+  .acts {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import { site } from '../site.config';
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="shell foot__inner">
+    <div>
+      <p class="foot__line">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <p class="cue">{site.location}</p>
+    </div>
+
+    <div class="foot__col">
+      <p class="cue cue--lime">Elsewhere</p>
+      <ul>
+        <li><a href={site.links.personal}>Writing and story</a></li>
+        <li><a href={site.links.juniorTalk}>Junior Talk</a></li>
+        <li><a href={site.links.ottawaWebStudio}>Ottawa Web Studio</a></li>
+        <li><a href={site.links.linkedin}>LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shell foot__base">
+    <span class="cue">&copy; {year} AbdulRahman Jandali</span>
+    <span class="cue">Shot on Sony ZV-E10 II</span>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--line);
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .foot__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .foot__line {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-weight: 700;
+    font-variation-settings: 'wdth' 92;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+  }
+
+  .foot__line a {
+    text-decoration: none;
+    border-bottom: 2px solid var(--lime);
+  }
+
+  .foot__col ul {
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .foot__col a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .foot__col a:hover {
+    color: var(--paper);
+  }
+
+  .foot__base {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+</style>

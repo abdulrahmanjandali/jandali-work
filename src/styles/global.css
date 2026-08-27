@@ -1,0 +1,218 @@
+/* ---------------------------------------------------------------
+   jandali-work
+   Palette   ink #0E0E12 / raise #16161C / line #2A2A33
+             paper #EDEDE7 / muted #8C8C96 / lime #C6FF3D
+   Type      Bricolage Grotesque (display) / Instrument Sans (body)
+             IBM Plex Mono (cues, dates, city codes)
+   Signature The run of show: a mono cue rail down the left edge with
+             lime cue marks. Event production vernacular, because that
+             is the work.
+   Lime is structural only. It never sits behind a photograph.
+   --------------------------------------------------------------- */
+
+:root {
+  --ink: #0e0e12;
+  --raise: #16161c;
+  --line: #2a2a33;
+  --paper: #edede7;
+  --muted: #8c8c96;
+  --lime: #c6ff3d;
+
+  --display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --body: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --rail: 5.5rem;
+  --gut: clamp(1.25rem, 4vw, 3.5rem);
+  --max: 78rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.25em;
+}
+
+a:hover {
+  text-decoration-color: var(--lime);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-variation-settings: 'wdth' 100;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+  text-wrap: pretty;
+}
+
+/* ---------- layout ---------- */
+
+.shell {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
+
+.band {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  border-top: 1px solid var(--line);
+}
+
+.band--flush {
+  border-top: 0;
+}
+
+/* ---------- mono utility ---------- */
+
+.cue {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cue--lime {
+  color: var(--lime);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--lime);
+  flex: none;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid var(--lime);
+  background: var(--lime);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--lime);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--line);
+}
+
+.btn--ghost:hover {
+  background: transparent;
+  color: var(--lime);
+  border-color: var(--lime);
+}
+
+/* ---------- reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  left: var(--gut);
+  top: 0.75rem;
+  z-index: 50;
+  background: var(--lime);
+  color: var(--ink);
+  padding: 0.6rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}

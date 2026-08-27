@@ -1,0 +1,74 @@
+---
+import { photos } from '../data/photos';
+const { limit } = Astro.props as { limit?: number };
+const shown = limit ? photos.slice(0, limit) : photos;
+---
+
+<div class="grid">
+  {
+    shown.map((p, i) => (
+      <figure class={`shot shot--${p.orientation} reveal`}>
+        <img src={p.src} alt={p.alt} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+        <figcaption class="cue">
+          {p.event} <span class="shot__yr">{p.year}</span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  .shot {
+    margin: 0;
+    background: var(--raise);
+  }
+
+  .shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .shot--tall img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .shot--square img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .shot--wide {
+    grid-column: span 2;
+  }
+
+  .shot--wide img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .shot figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0.1rem 0;
+  }
+
+  .shot__yr {
+    color: var(--lime);
+  }
+
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .shot--wide {
+      grid-column: span 2;
+    }
+  }
+</style>

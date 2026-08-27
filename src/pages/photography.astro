@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { camera, photos } from '../data/photos';
+---
+
+<Base
+  title="Photography"
+  description="Event and speaker coverage, shot on a Sony ZV-E10 II."
+  cue="Event coverage"
+>
+  <section class="band band--flush">
+    <div class="shell">
+      <p class="eyebrow">Event and speaker coverage</p>
+      <h1 class="page__head">The room, from the side of it nobody photographs.</h1>
+      <p class="lede">
+        Speakers mid-sentence, the audience deciding whether to believe them, the ten minutes
+        before doors when the organizers still look worried. I coordinated events for years
+        before I shot them, so I know the moments a programme does not list.
+      </p>
+      <p class="cue">
+        {photos.length} frames &middot; Shot on {camera}
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <PhotoGrid />
+    </div>
+  </section>
+
+  <section class="band close">
+    <div class="shell">
+      <h2 class="page__head sm">Have an event coming up?</h2>
+      <p class="lede">
+        Tell me the date, the venue, and roughly how long you need covered. I will come back
+        with what it costs.
+      </p>
+      <a class="btn" href="/contact">Ask about a shoot</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page__head {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-variation-settings: 'wdth' 84;
+    max-width: 17ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .page__head.sm {
+    font-size: clamp(2rem, 6vw, 3.6rem);
+  }
+
+  .lede {
+    max-width: 52ch;
+    color: color-mix(in srgb, var(--paper) 82%, transparent);
+    margin-bottom: 1.5rem;
+  }
+</style>

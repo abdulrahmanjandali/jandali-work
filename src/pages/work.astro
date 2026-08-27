@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import RunOfShow from '../components/RunOfShow.astro';
+import { liveRoles, education, certificates, skills } from '../data/roles';
+import { site } from '../site.config';
+---
+
+<Base title="Work" description="Seven roles across Canada and Qatar in marketing, sales, and event coordination." cue="Run of show">
+  <section class="band band--flush">
+    <div class="shell">
+      <p class="eyebrow">Run of show</p>
+      <h1 class="page__head">Every role, in order, with what it produced.</h1>
+      <p class="lede">
+        Two countries, two languages of work. The marketing side and the sales side of each job
+        are the same job, so both are here rather than split across two documents.
+      </p>
+      <a class="btn btn--ghost" href={site.resumePath} download>Download the resume</a>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <RunOfShow entries={liveRoles} />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell cols">
+      <div>
+        <p class="eyebrow">Education</p>
+        <h2 class="sub">{education.degree}</h2>
+        <p class="muted">{education.school}</p>
+        <p class="cue">
+          {education.start} &ndash; {education.end} &middot; GPA {education.gpa}
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow">Certificates</p>
+        <ul class="plain">
+          {
+            certificates.map((c) => (
+              <li>
+                <span>{c.name}</span> <span class="cue">{c.year}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow">What I do</p>
+        <ul class="plain">
+          {skills.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band close">
+    <div class="shell">
+      <h2 class="page__head">Want the long version?</h2>
+      <p class="lede">Ask me anything the page left out.</p>
+      <a class="btn" href="/contact">Start a conversation</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page__head {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-variation-settings: 'wdth' 84;
+    max-width: 18ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .lede {
+    max-width: 52ch;
+    color: color-mix(in srgb, var(--paper) 82%, transparent);
+    margin-bottom: 2rem;
+  }
+
+  .cols {
+    display: grid;
+    gap: 2.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+
+  .sub {
+    font-size: 1.4rem;
+    font-variation-settings: 'wdth' 92;
+    margin-bottom: 0.5rem;
+  }
+
+  .muted {
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .plain li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--line);
+  }
+</style>

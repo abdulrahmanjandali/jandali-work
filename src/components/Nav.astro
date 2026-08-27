@@ -1,0 +1,115 @@
+---
+import { nav, site } from '../site.config';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const { cue = 'Ottawa, ON' } = Astro.props;
+---
+
+<header class="bar">
+  <div class="shell bar__inner">
+    <a class="mark" href="/">
+      <span class="mark__dot" aria-hidden="true"></span>
+      <span class="mark__name">Jandali</span>
+    </a>
+
+    <span class="cue bar__cue">{cue}</span>
+
+    <nav aria-label="Main">
+      <ul class="menu">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class={path === item.href ? 'is-here' : ''} aria-current={path === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--ink) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bar__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    min-height: 4rem;
+  }
+
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    font-family: var(--display);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 88;
+    letter-spacing: -0.02em;
+    font-size: 1.15rem;
+  }
+
+  .mark__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--lime);
+    flex: none;
+  }
+
+  .bar__cue {
+    margin-left: auto;
+  }
+
+  .menu {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    padding-block: 0.35rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .menu a:hover {
+    color: var(--paper);
+  }
+
+  .menu a.is-here {
+    color: var(--lime);
+    border-bottom-color: var(--lime);
+  }
+
+  @media (max-width: 640px) {
+    .bar__cue {
+      display: none;
+    }
+    .bar__inner {
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      padding-block: 0.6rem;
+    }
+    .menu {
+      gap: 1rem;
+      margin-left: auto;
+    }
+  }
+</style>

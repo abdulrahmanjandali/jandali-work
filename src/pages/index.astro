@@ -1,0 +1,271 @@
+---
+import Base from '../layouts/Base.astro';
+import RunOfShow from '../components/RunOfShow.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { liveRoles } from '../data/roles';
+import { proofStats, fundingBreakdown, fundingTotal, fundingLabel } from '../data/proof';
+import { camera } from '../data/photos';
+import { site } from '../site.config';
+
+const featured = liveRoles.slice(0, 4);
+---
+
+<Base cue={site.availability}>
+  <!-- Hero. The thesis is the three rooms the work actually happens in. -->
+  <section class="band band--flush hero">
+    <div class="shell">
+      <p class="eyebrow">{site.location}</p>
+
+      <h1 class="hero__head">
+        <span>Campuses,</span>
+        <span>showrooms,</span>
+        <span class="hero__lime">and stages.</span>
+      </h1>
+
+      <p class="hero__sub">
+        I'm AbdulRahman Jandali, a marketer in Ottawa. Six years of content, events, and
+        front-line work across Canada and Qatar, mostly in rooms full of people who had not
+        decided yet. I also photograph the kind of events I used to run.
+      </p>
+
+      <div class="hero__acts">
+        <a class="btn" href="/contact">Start a conversation</a>
+        <a class="btn btn--ghost" href="/work">See the work</a>
+      </div>
+
+      <dl class="strip">
+        <div><dt class="cue">Based</dt><dd>Ottawa, YOW</dd></div>
+        <div><dt class="cue">Before that</dt><dd>Doha, DOH</dd></div>
+        <div><dt class="cue">Shooting on</dt><dd>{camera}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section class="band">
+    <div class="shell">
+      <div class="head">
+        <p class="eyebrow">Selected work</p>
+        <a class="more" href="/work">All roles</a>
+      </div>
+      <RunOfShow entries={featured} compact={true} />
+    </div>
+  </section>
+
+  <!-- Proof. The funding number carries its own breakdown so nobody has to ask. -->
+  <section class="band">
+    <div class="shell">
+      <p class="eyebrow">On the record</p>
+
+      <div class="stats">
+        {
+          proofStats.map((s) => (
+            <div class="stat reveal">
+              <p class="stat__v">
+                {s.value}
+                {s.unit && <span class="stat__u"> {s.unit}</span>}
+              </p>
+              <p class="stat__l">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        fundingBreakdown.length > 0 && (
+          <div class="break">
+            <p class="cue cue--lime">
+              {fundingTotal} {fundingLabel}
+            </p>
+            <ul>
+              {fundingBreakdown.map((f) => (
+                <li>
+                  <span>{f.source}</span>
+                  <span class="cue">
+                    {f.amount} &middot; {f.year}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Photography teaser -->
+  <section class="band">
+    <div class="shell">
+      <div class="head">
+        <p class="eyebrow">Event and speaker coverage</p>
+        <a class="more" href="/photography">Full gallery</a>
+      </div>
+      <p class="lede">
+        I spent years coordinating events before I started shooting them, which is mostly why I
+        know where to stand.
+      </p>
+      <PhotoGrid limit={4} />
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <!-- Contact -->
+  <section class="band close">
+    <div class="shell">
+      <h2 class="close__head">Hiring, or need a shoot covered?</h2>
+      <p class="lede">One form, both answers. It reaches the same inbox either way.</p>
+      <a class="btn" href="/contact">Start a conversation</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-top: clamp(3rem, 10vw, 6.5rem);
+  }
+
+  .hero__head {
+    font-size: clamp(3rem, 12vw, 8.5rem);
+    font-variation-settings: 'wdth' 82;
+    font-weight: 800;
+    line-height: 0.88;
+    display: grid;
+  }
+
+  .hero__lime {
+    color: var(--lime);
+  }
+
+  .hero__sub {
+    max-width: 46ch;
+    margin-top: 2rem;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+    color: color-mix(in srgb, var(--paper) 88%, transparent);
+  }
+
+  .hero__acts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  .strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin: clamp(3rem, 7vw, 4.5rem) 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .strip div {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .strip dd {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .head .eyebrow {
+    margin-bottom: 1.75rem;
+  }
+
+  .more {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--lime);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.2rem;
+  }
+
+  .more:hover {
+    border-bottom-color: var(--lime);
+  }
+
+  .lede {
+    max-width: 52ch;
+    color: color-mix(in srgb, var(--paper) 82%, transparent);
+    margin-bottom: 2rem;
+  }
+
+  .stats {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .stat {
+    background: var(--ink);
+    padding: 1.5rem 1.25rem;
+  }
+
+  .stat__v {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    font-weight: 700;
+    font-variation-settings: 'wdth' 86;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0 0 0.6rem;
+  }
+
+  .stat__u {
+    font-size: 0.45em;
+    color: var(--lime);
+  }
+
+  .stat__l {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 22ch;
+  }
+
+  .break {
+    margin-top: 2rem;
+    border-left: 2px solid var(--lime);
+    padding-left: 1.25rem;
+  }
+
+  .break ul {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 44rem;
+  }
+
+  .break li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .close__head {
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    font-variation-settings: 'wdth' 86;
+    margin-bottom: 1.25rem;
+  }
+</style>

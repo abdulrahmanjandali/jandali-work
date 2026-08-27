@@ -1,0 +1,43 @@
+---
+import { testimonials } from '../data/testimonials';
+---
+
+{
+  testimonials.length > 0 && (
+    <section class="band">
+      <div class="shell">
+        <p class="eyebrow">What the work looked like from the other side</p>
+        <div class="quotes">
+          {testimonials.map((t) => (
+            <figure class="quote reveal">
+              <blockquote>{t.quote}</blockquote>
+              <figcaption class="cue">
+                {t.name}, {t.role}, {t.org}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .quotes {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  }
+
+  .quote {
+    margin: 0;
+    padding: 1.5rem;
+    background: var(--raise);
+    border-left: 2px solid var(--lime);
+  }
+
+  blockquote {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+  }
+</style>
