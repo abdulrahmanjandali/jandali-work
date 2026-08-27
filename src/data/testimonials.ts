@@ -15,6 +15,18 @@ export type Testimonial = {
 };
 
 export const testimonials: Testimonial[] = [
-  // TODO: pull the work-focused quotes off your existing testimonial wall.
-  // { quote: '...', name: '...', role: '...', org: '...' },
+  {
+    quote:
+      'I am proud of you and of your attitude towards learning and growth, you are going to big places buddy!',
+    name: 'Wasim Al Kafarneh',
+    role: 'General Manager',
+    org: 'QRates',
+  },
+  {
+    quote:
+      'One of the most exceptional students I have encountered in my years of teaching, ranked at the top of an extraordinarily capable class, with a keen talent for public speaking, research, and content development.',
+    name: 'Tarek Abu Asi',
+    role: 'Senior Lecturer, Digital Marketing',
+    org: 'UDST',
+  },
 ];

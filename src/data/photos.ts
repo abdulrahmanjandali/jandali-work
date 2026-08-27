@@ -18,8 +18,6 @@ export type Photo = {
   orientation: 'wide' | 'tall' | 'square';
 };
 
-export const camera = 'Sony ZV-E10 II';
-
 export const photos: Photo[] = [
   // TODO: replace all of these with your real frames. The placeholders exist so
   // you can see the layout before the photos land. Delete any you do not fill.

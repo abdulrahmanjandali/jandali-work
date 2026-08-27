@@ -5,7 +5,6 @@ import PhotoGrid from '../components/PhotoGrid.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { liveRoles } from '../data/roles';
 import { proofStats, fundingBreakdown, fundingTotal, fundingLabel } from '../data/proof';
-import { camera } from '../data/photos';
 import { site } from '../site.config';
 
 // Selected work. An explicit list rather than the top of the array, so adding or
@@ -40,7 +39,6 @@ const featured = featuredIds.flatMap((id) => liveRoles.filter((r) => r.id === id
       <dl class="strip">
         <div><dt class="cue">Based</dt><dd>Ottawa, YOW</dd></div>
         <div><dt class="cue">Before that</dt><dd>Doha, DOH</dd></div>
-        <div><dt class="cue">Shooting on</dt><dd>{camera}</dd></div>
       </dl>
     </div>
   </section>
@@ -86,7 +84,7 @@ const featured = featuredIds.flatMap((id) => liveRoles.filter((r) => r.id === id
                 <li>
                   <span>{f.source}</span>
                   <span class="cue">
-                    {f.amount} &middot; {f.year}
+                    {f.amount} &middot; {f.year} &middot; {f.kind}
                   </span>
                 </li>
               ))}

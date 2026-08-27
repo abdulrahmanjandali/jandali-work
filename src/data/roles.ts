@@ -70,7 +70,7 @@ export const roles: Role[] = [
     end: 'Jun 2026',
     bullets: [
       'Founded Junior Talk, a platform connecting undergraduates with internship opportunities, reaching 7,000+ students.',
-      'Pitched to judges, investors, and university partners, securing 21,000+ CAD in combined grants and prizes.',
+      'Pitched to judges, investors, and university partners, winning 13,000 CAD in Business Gateway grants and prizes for the venture.',
       'Ran discovery conversations with students and employers across 3 universities to find the gap between student readiness and what employers actually hire for.',
       'Drove 250+ applications and 200,000+ LinkedIn impressions in a single month from 100+ posts.',
     ],

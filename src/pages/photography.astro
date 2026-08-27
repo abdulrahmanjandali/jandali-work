@@ -1,12 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
-import { camera, photos } from '../data/photos';
+import { photos } from '../data/photos';
 ---
 
 <Base
   title="Photography"
-  description="Event and speaker coverage, shot on a Sony ZV-E10 II."
+  description="Event and speaker coverage."
   cue="Event coverage"
 >
   <section class="band band--flush">
@@ -19,7 +19,7 @@ import { camera, photos } from '../data/photos';
         before I shot them, so I know the moments a programme does not list.
       </p>
       <p class="cue">
-        {photos.length} frames &middot; Shot on {camera}
+        {photos.length} frames
       </p>
     </div>
   </section>
